@@ -17,7 +17,6 @@ public class TimeTableFragment extends Fragment {
 
     SharedPreferences sharedPref;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +25,6 @@ public class TimeTableFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_time_table, container, false);
@@ -309,26 +307,12 @@ public class TimeTableFragment extends Fragment {
                             break;
                         default:
                             break;
-                       
-
-
-
-
-
-
 
                     }
                 }
             }
 
         }
-
         return rootView;
-
-
-
-
     }
-
-
 }

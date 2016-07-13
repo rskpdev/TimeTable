@@ -59,8 +59,6 @@ public class CfragDbAdapter{
         }
     }
 
-
-
     public CfragDbAdapter open(Context mCtx) throws SQLException {
         mDbHelper = new DatabaseHelper(mCtx);
         mDb = mDbHelper.getWritableDatabase();
@@ -94,7 +92,6 @@ public class CfragDbAdapter{
 
     }
 
-
     public Cursor fetchAllCourses() {
 
         Cursor mCursor = mDb.query(SQLITE_TABLE, new String[] {KEY_ROWID,
@@ -106,8 +103,5 @@ public class CfragDbAdapter{
         }
         return mCursor;
     }
-
-
-
 
 }

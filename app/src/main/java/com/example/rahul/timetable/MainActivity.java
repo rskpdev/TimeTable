@@ -24,9 +24,6 @@ public class MainActivity extends AppCompatActivity
     private CfragDbAdapter cFragdbHelp;
     SharedPreferences sharedPref;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +32,6 @@ public class MainActivity extends AppCompatActivity
         cFragdbHelp = new CfragDbAdapter();
         cFragdbHelp.open(this);
         sharedPref = getSharedPreferences("mypref", Context.MODE_PRIVATE);
-
-
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -78,10 +72,25 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+
+            if (fab.isShown() == false) {
+
+                CourseFragment firstFragment = new CourseFragment();
+                firstFragment.setArguments(getIntent().getExtras());
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, firstFragment).commit();
+                setTitle("My Courses");
+                fab.show();
+
+            }
+            else   {
+                super.onBackPressed();
+            }
         }
     }
 
@@ -133,10 +142,7 @@ public class MainActivity extends AppCompatActivity
             firstFragment.setArguments(getIntent().getExtras());
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, firstFragment).commit();
-
-
             fab.show();
-
 
         } else if (id == R.id.nav_timetable) {
 
@@ -144,8 +150,6 @@ public class MainActivity extends AppCompatActivity
             secondFragment.setArguments(getIntent().getExtras());
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, secondFragment).commit();
-
-
             fab.hide();
 
         }else if (id == R.id.nav_feedback) {
@@ -154,8 +158,6 @@ public class MainActivity extends AppCompatActivity
             thirdFragment.setArguments(getIntent().getExtras());
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, thirdFragment).commit();
-
-
             fab.hide();
 
         }
